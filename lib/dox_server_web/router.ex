@@ -20,6 +20,12 @@ defmodule DoxServerWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api/v1", DoxServerWeb.Api.V1 do
+    pipe_through [:api]
+
+    post "/github/callback", AuthController, :authorize
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", DoxServerWeb do
   #   pipe_through :api

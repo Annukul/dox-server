@@ -42,9 +42,10 @@ defmodule DoxServer.Oauth.Github do
   end
 
   defp github_token_url(code) do
-    client_id = Application.get_env(:produze, :github_client_id)
-    client_secret = Application.get_env(:produze, :github_client_secret)
-    redirect_uri = Application.get_env(:produze, :github_redirect_uri)
+    client_id = Application.get_env(:dox_server, :github_client_id)
+    client_secret = Application.get_env(:dox_server, :github_client_secret)
+    redirect_uri = Application.get_env(:dox_server, :github_redirect_uri)
+
     "https://github.com/login/oauth/access_token?client_id=#{client_id}&client_secret=#{client_secret}&code=#{code}&redirect_uri=#{redirect_uri}"
   end
 

@@ -29,6 +29,14 @@ config :dox_server, DoxServer.Mailer, adapter: Swoosh.Adapters.Local
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
 
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, :json_library, Jason
+
+config :dox_server,
+  github_client_id: System.get_env("GITHUB_CLIENT_ID"),
+  github_client_secret: System.get_env("GITHUB_CLIENT_SECRET"),
+  github_redirect_uri: System.get_env("GITHUB_REDIRECT_URI")
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.14.29",
@@ -46,6 +54,11 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :cors_plug,
+  origin: "*",
+  max_age: 86400,
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE"]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

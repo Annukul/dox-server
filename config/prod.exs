@@ -15,6 +15,11 @@ config :dox_server, DoxServerWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :dox_server,
+  github_client_id: System.get_env("GITHUB_CLIENT_ID"),
+  github_client_secret: System.get_env("GITHUB_CLIENT_SECRET"),
+  github_redirect_uri: System.get_env("GITHUB_REDIRECT_URI")
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

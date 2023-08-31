@@ -42,9 +42,9 @@ defmodule DoxServer.Oauth.Github do
   end
 
   defp github_token_url(code) do
-    client_id = Application.get_env(:dox_server, :github_client_id)
-    client_secret = Application.get_env(:dox_server, :github_client_secret)
-    redirect_uri = Application.get_env(:dox_server, :github_redirect_uri)
+    client_id = "ae428d1eef36e06da413"
+    client_secret = "0b06ed3596ce4a2dc576bd51c03dc83c725ba2e2"
+    redirect_uri = "https://dox01.vercel.app/oauth/github/callback"
 
     "https://github.com/login/oauth/access_token?client_id=#{client_id}&client_secret=#{client_secret}&code=#{code}&redirect_uri=#{redirect_uri}"
   end
